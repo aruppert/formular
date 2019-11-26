@@ -1,10 +1,6 @@
 import React from "react";
 import "./App.css";
-import styled from "@emotion/styled";
-
-const ContactFormular = styled.div`
-  background: lightgray;
-`;
+import ContactFormular from "./components/ContactFormular";
 
 function App() {
   return (
