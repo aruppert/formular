@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { addEnquiry } from "../api/enquiries";
 
 const Formular = styled.form`
   display: flex;
@@ -15,22 +16,19 @@ export default function ContactFormular() {
   const [email, setEmail] = React.useState("");
   const [tel, setTel] = React.useState("");
   const [text, setText] = React.useState("");
-  const [filledForm, setFilledForm] = React.useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    const contactDetails = {
-      first: firstName,
-      last: lastName,
+    const enquiry = {
+      firstName,
+      lastName,
       email,
       tel,
       text
     };
 
-    const contactDetailsString = JSON.stringify(contactDetails);
-
-    setFilledForm(contactDetailsString);
+    addEnquiry(enquiry);
   }
 
   return (
@@ -83,7 +81,6 @@ export default function ContactFormular() {
           />
         </div>
         <button>Submit</button>
-        <div>{filledForm && filledForm}</div>
       </Formular>
     </>
   );
